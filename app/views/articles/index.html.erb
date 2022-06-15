@@ -15,6 +15,9 @@
               <%= image_tag url_for(article.cover), height: "210px" %>
               <div class="card-body">
                 <%= link_to article.title, article %>
+                <p font-italic pb-2>
+                  by <%= article.user.username if article.user%>
+                </p>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">

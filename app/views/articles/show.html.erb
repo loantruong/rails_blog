@@ -2,6 +2,7 @@
   <div class="row mt-5">
     <div class="col">
       <h1><%= @article.title %></h1>
+      <p>by <%= @article.user.username if @article.user %></p>
     </div>
     <div class="col-2">
       <ul>
