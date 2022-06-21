@@ -1,0 +1,15 @@
+<div class="container">
+  <%= form_with(scope: :session, url: login_path, class: "shadow p-3 mb-3", local: true) do |form| %>
+    <div class="mb-3">
+      <%= form.label :email, style: "display: block" %>
+      <%= form.email_field :email %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password, style: "display: block" %>
+      <%= form.password_field :password %>
+    </div>
+    <div  class="mb-3">
+      <%= form.submit "Log in", class: "btn btn-success btn-block" %>
+    </div>
+  <% end %>
+</div>
