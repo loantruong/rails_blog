@@ -21,6 +21,14 @@
     <% end %>
   </div>
 
+  <div  class="mb-3">
+    <%= form.label :cover, class: "form-label" %><br>
+    <%= form.text_area :cover, class: "form-control" %><br>
+    <% article.errors.full_messages_for(:cover).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
 
   <div  class="mb-3">
     <%= form.submit "Save", class: "btn btn-success btn-block" %>
