@@ -10,8 +10,13 @@
           <a class="nav-link active" aria-current="page" href="/articles">Articles</a>
         </li>
       </ul>-->
-      <%= link_to 'My account', login_path, :class => "nav-item navbar-brand px-3" %>
-      <%= link_to 'Logout', logout_path, :class => "nav-item navbar-brand px-3", data: { turbo_method: :delete } %>
+      <% if logged_in? %>
+        <%= link_to current_user.username, user_path(current_user), :class => "nav-item navbar-brand px-3" %>
+        <%= link_to 'Logout', logout_path, :class => "nav-item navbar-brand px-3", data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to 'My account', login_path, :class => "nav-item navbar-brand px-3" %>
+        <%= link_to 'Sign up', signup_path, :class => "nav-item navbar-brand px-3" %>
+        <% end %>
     </div>
   </div>
 </nav>
