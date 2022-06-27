@@ -1,36 +1,39 @@
-<%= form_with model: article do |form| %>
+<div class="container">
+  <%= form_with model: article do |form| %>
 
-  <div  class="mb-3">
-    <%= form.label :status, class: "form-label" %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </div>
+    <div  class="mb-3">
+      <%= form.label :status, class: "form-label" %><br>
+      <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    </div>
 
-  <div  class="mb-3">
-    <%= form.label :title, class: "form-label" %><br>
-    <%= form.text_field :title, class: "form-control" %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+    <div  class="mb-3">
+      <%= form.label :title, class: "form-label" %><br>
+      <%= form.text_field :title, class: "form-control" %>
+      <% article.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
-  <div  class="mb-3">
-    <%= form.label :body, class: "form-label" %><br>
-    <%= form.text_area :body, class: "form-control" %><br>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+    <div  class="mb-3">
+      <%= form.label :body, class: "form-label" %><br>
+      <%= form.text_area :body, class: "form-control" %><br>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
-  <div  class="mb-3">
-    <%= form.label :cover, class: "form-label" %><br>
-    <%= form.text_area :cover, class: "form-control" %><br>
-    <% article.errors.full_messages_for(:cover).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+    <div  class="mb-3">
+      <%= form.label :cover, class: "form-label" %><br>
+      <%= form.text_area :cover, class: "form-control" %><br>
+      <% article.errors.full_messages_for(:cover).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
 
 
-  <div  class="mb-3">
-    <%= form.submit "Save", class: "btn btn-success btn-block" %>
-  </div>
-<% end %>
+    <div  class="mb-3">
+      <%= form.submit "Save", class: "btn btn-success btn-block" %>
+    </div>
+  <% end %>
+
+</div>
