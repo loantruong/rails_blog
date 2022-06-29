@@ -2,19 +2,25 @@
   <div class="row float-end">
   </div>
   <%= render @user %>
-  <% if logged_in? && @user == current_user %>
-
-  <%= link_to "Edit this user", edit_user_path(@user) %> |  <%= link_to "Back to users", users_path %> |
-  <%= link_to "Destroy", user_path(@user), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %>
+  <% if logged_in? %>
+    <% if @user == current_user || current_user.admin? %>
+      <%= link_to "Edit this user", edit_user_path(@user) %> |  <%= link_to "Back to users", users_path %>
+    <% end %>
+    <% if current_user.admin? %>
+      | <%= link_to "Destroy", user_path(@user), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+      } %>
+    <% end %>
   <% end %>
   <!--<div class="row">
     <div class="container mt-5">
       <%#= button_to "Destroy this user", @user, method: :delete %>
     </div>
   </div>-->
+</div>
+<div class="container my-5">
+  <%= link_to "Create new article", new_article_path, class: "btn btn-primary" %>
 </div>
 <div class="album py-5 mb-5">
   <div class="container">

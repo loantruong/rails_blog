@@ -4,7 +4,7 @@
       <h1><%= @article.title %></h1>
       <p>by <%= @article.user.username if @article.user %></p>
     </div>
-    <% if logged_in? && @article.user == current_user %>
+    <% if logged_in? && (@article.user == current_user) || (current_user.admin?) %>
       <div class="col-2">
         <ul>
           <li><%= link_to "Edit", edit_article_path(@article) %></li>
