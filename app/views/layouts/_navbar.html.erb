@@ -1,12 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">My Blog</a>
+    <a class="navbar-brand" href="/">
+      My blog
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn navbar-brand dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           Articles
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -17,8 +19,16 @@
         </ul>
       </div>
       <% if logged_in? %>
-        <%= link_to current_user.username, user_path(current_user), :class => "nav-item navbar-brand px-3" %>
-        <%= link_to 'Logout', logout_path, :class => "nav-item navbar-brand px-3", data: { turbo_method: :delete } %>
+        <div class="dropdown">
+          <button class="btn navbar-brand dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile [<%= current_user.username %>]
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <%= link_to 'View my profile', user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Edit my profile", edit_user_path(current_user), class: "dropdown-item" %>
+          </ul>
+        </div>
+        <%= link_to 'Logout', logout_path, :class => "nav-item navbar-brand px-3 float-end", data: { turbo_method: :delete } %>
       <% else %>
         <%= link_to 'My account', login_path, :class => "nav-item navbar-brand px-3" %>
         <%= link_to 'Sign up', signup_path, :class => "nav-item navbar-brand px-3" %>
