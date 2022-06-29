@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :require_user, only: [:edit, :destroy]
-  before_action :require_same_user, only: [:edit, :destroy]
+  before_action :require_user, only: %i[edit, update]
+  before_action :require_same_user, only: %i[edit, update, destroy]
 
   # GET /users or /users.json
   def index
@@ -55,11 +55,9 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    session[:user_id] = nil
+    #flash[:notice] = "Account and all associated articles successfully deleted"
+    redirect_to root_path, status: :see_other
   end
 
   private
